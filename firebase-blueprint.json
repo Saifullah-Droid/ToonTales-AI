@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Story": {
+      "title": "Story",
+      "description": "A generated story for a child",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "childAge": { "type": "string" },
+        "childPersonality": { "type": "string" },
+        "parentPersonality": { "type": "string" },
+        "theme": { "type": "string" },
+        "setting": { "type": "string" },
+        "title": { "type": "string" },
+        "storyText": { "type": "string" },
+        "scenes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "imageUrls": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "storyText", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents"
+    },
+    "/stories/{storyId}": {
+      "schema": "Story",
+      "description": "Generated stories"
+    }
+  }
+}
